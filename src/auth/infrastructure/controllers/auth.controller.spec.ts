@@ -104,10 +104,10 @@ describe('AuthController (Integration)', () => {
 
   it('should return Unauthorized if user is not found by UserService', async () => {
     const userServiceMock = app.get<AuthUserRepository>(AuthUserRepository) as any;
-    (userServiceMock.findByEmail as jest.Mock).mockResolvedValue(null); // Simula usuário não encontrado
+    (userServiceMock.findByEmail as jest.Mock).mockResolvedValue(null);
 
     const localStrategyMock = app.get<LocalStrategy>(LocalStrategy) as any;
-    (localStrategyMock.validate as jest.Mock).mockResolvedValue(null); // Simula falha na validação
+    (localStrategyMock.validate as jest.Mock).mockResolvedValue(null);
 
     return request(app.getHttpServer())
       .post('/auth/login')

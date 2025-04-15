@@ -75,7 +75,7 @@ describe('UpdateUserUseCase', () => {
     expect(userRepository.update).toHaveBeenCalledWith(userId, { password: hashedPassword });
   });
 
-  it('should throw NotFoundException if the user does not exist and the calling code expects it', async () => {
+  it('should throw NotFoundException if the user does not exist (findById returns null)', async () => {
     const userId = 'nonExistingId';
     const updateUserDto: UpdateUserDto = { name: 'New Name' };
     (userRepository.findById as jest.Mock).mockResolvedValue(null);
@@ -83,6 +83,19 @@ describe('UpdateUserUseCase', () => {
     await expect(updateUserUseCase.execute(userId, updateUserDto)).rejects.toThrow(NotFoundException);
     expect(userRepository.findById).toHaveBeenCalledWith(userId);
     expect(userRepository.update).not.toHaveBeenCalled();
+  });
+
+  it('should throw NotFoundException if the user exists but update operation fails (update returns null)', async () => {
+    const userId = 'someId';
+    const existingUser = new User(userId, 'Old Name', 'old@example.com', 'oldHash', 'client');
+    const updateUserDto: UpdateUserDto = { name: 'New Name' };
+
+    (userRepository.findById as jest.Mock).mockResolvedValue(existingUser);
+    (userRepository.update as jest.Mock).mockResolvedValue(null);
+
+    await expect(updateUserUseCase.execute(userId, updateUserDto)).rejects.toThrow(NotFoundException);
+    expect(userRepository.findById).toHaveBeenCalledWith(userId);
+    expect(userRepository.update).toHaveBeenCalledWith(userId, { ...updateUserDto });
   });
 
   it('should re-throw any error from userRepository.findById', async () => {
@@ -108,15 +121,5 @@ describe('UpdateUserUseCase', () => {
     await expect(updateUserUseCase.execute(userId, updateUserDto)).rejects.toThrow(error);
     expect(userRepository.findById).toHaveBeenCalledWith(userId);
     expect(userRepository.update).toHaveBeenCalledWith(userId, { name: 'New Name' });
-  });
-
-  it('should throw NotFoundException if the user does not exist', async () => {
-    const userId = 'nonExistingId';
-    const updateUserDto: UpdateUserDto = { name: 'New Name' };
-    (userRepository.findById as jest.Mock).mockResolvedValue(null);
-
-    await expect(updateUserUseCase.execute(userId, updateUserDto)).rejects.toThrow(NotFoundException);
-    expect(userRepository.findById).toHaveBeenCalledWith(userId);
-    expect(userRepository.update).not.toHaveBeenCalled();
   });
 });

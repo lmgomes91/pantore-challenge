@@ -11,7 +11,7 @@ import { PromoteUserToAdminUseCase } from 'src/user/application/useCases/promote
 import { User } from 'src/user/domain/entities/user.entity';
 import { CreateUserDto } from './dtos/createUser.dto';
 import { UpdateUserDto } from './dtos/updateUser.dto';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from 'src/auth/guards/jwtAuth.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { UserRole } from 'src/user/enums/userRole.enum';
 
@@ -115,10 +115,31 @@ describe('UserController (Integration)', () => {
 
   describe('POST /users/promote/:id', () => {
     it('should promote a user to admin', async () => {
+      (mockPromoteUserToAdminUseCase.execute as jest.Mock).mockResolvedValue(undefined);
       return request(app.getHttpServer())
-        .post('/users/promote/someId')
+        .post('/users/promote/successId')
         .expect(HttpStatus.OK)
-        .expect((response) => expect(response.body).toEqual({ message: 'User with ID someId promoted to administrator.' }));
+        .expect((response) => expect(response.body).toEqual({ message: 'User with ID successId promoted to administrator.' }));
+    });
+
+    it('should return a message indicating failure when the use case throws an error', async () => {
+      (mockPromoteUserToAdminUseCase.execute as jest.Mock).mockRejectedValue(new Error('Failed to promote user in use case'));
+      return request(app.getHttpServer())
+        .post('/users/promote/errorId')
+        .expect(HttpStatus.OK)
+        .expect((response) => {
+          expect(response.body).toEqual({ message: 'Failed to promote user in use case' });
+        });
+    });
+
+    it('should return a generic failure message if the use case error has no message', async () => {
+      (mockPromoteUserToAdminUseCase.execute as jest.Mock).mockRejectedValue(new Error());
+      return request(app.getHttpServer())
+        .post('/users/promote/anotherErrorId')
+        .expect(HttpStatus.OK)
+        .expect((response) => {
+          expect(response.body).toEqual({ message: 'Failed to promote user.' });
+        });
     });
   });
 });

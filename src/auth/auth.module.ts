@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { AuthService } from './services/auth.service';
-import { UserModule } from '../user/user.module';
 import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtModule } from '@nestjs/jwt';
@@ -17,7 +16,6 @@ import { AuthUserSchema } from './schemas/authUser.schema';
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: AuthUser.name, schema:  AuthUserSchema}]),
-    // UserModule,
     PassportModule,
     ConfigModule,
     JwtModule.registerAsync({

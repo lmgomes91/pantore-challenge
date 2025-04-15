@@ -26,9 +26,7 @@ import { UserRepository } from './infrastructure/repositories/user.repository';
     SecurityConfigService,
     DeleteUserUseCase,
     PromoteUserToAdminUseCase,
-    // UserService
   ],
-  // exports: [UserService],
   exports: [],
 })
 export class UserModule {}

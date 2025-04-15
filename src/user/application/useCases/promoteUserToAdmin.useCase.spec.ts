@@ -34,7 +34,7 @@ describe('PromoteUserToAdminUseCase', () => {
     const userId = 'someId';
     const existingUser = new User(userId, 'Test User', 'test@example.com', 'hashed', UserRole.CLIENT);
     (userRepository.findById as jest.Mock).mockResolvedValue(existingUser);
-    (userRepository.updateRole as jest.Mock).mockResolvedValue(undefined); // Assume updateRole doesn't return anything significant
+    (userRepository.updateRole as jest.Mock).mockResolvedValue(undefined);
 
     await expect(promoteUserToAdminUseCase.execute(userId)).resolves.toBeUndefined();
     expect(userRepository.findById).toHaveBeenCalledWith(userId);

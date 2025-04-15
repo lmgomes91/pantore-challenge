@@ -7,7 +7,7 @@ import { UpdateUserUseCase } from 'src/user/application/useCases/updateUser.useC
 import { UpdateUserDto } from './dtos/updateUser.dto';
 import { ApiBearerAuth, ApiBody, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { DeleteUserUseCase } from 'src/user/application/useCases/deleteUser.useCase';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from 'src/auth/guards/jwtAuth.guard';
 import { UserRole } from 'src/user/enums/userRole.enum';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { RolesGuard } from 'src/auth/guards/roles.guard';

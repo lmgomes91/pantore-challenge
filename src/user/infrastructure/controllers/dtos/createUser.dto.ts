@@ -19,7 +19,4 @@ export class CreateUserDto {
   })
   password: string;
 
-  // @ApiProperty({ enum: ['admin', 'client'], description: 'User\'s role (admin or client)' })
-  // @IsIn(['admin', 'client'], { message: 'Role must be "admin" or "client"' })
-  // role: 'admin' | 'client';
 }

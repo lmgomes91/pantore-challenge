@@ -32,7 +32,6 @@ describe('GetUserUseCase', () => {
   describe('findById', () => {
     it('should return a user if found by id', async () => {
       const userId = 'someId';
-      // const expectedUser = new User(userId, 'Test User', 'test@example.com', 'hashed', 'client');
       const expectedUser: Omit<User, 'password'> = { id: userId, name: 'Test User', email: 'test@example.com', role: 'client' };
       
       (userRepository.findById as jest.Mock).mockResolvedValue(expectedUser);

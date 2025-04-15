@@ -3,7 +3,6 @@ import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { SecurityConfigService } from 'src/common/config/securityConfig.service';
-import { UserRole } from 'src/user/enums/userRole.enum';
 import { AuthUserRepository } from '../infrastructure/repositories/authUser.repository';
 import { AuthUserRole } from '../enums/authUserRole.enum';
 import { CreateAuthUserDto } from '../infrastructure/controllers/dtos/createauthUser.dto';
@@ -32,7 +31,7 @@ export class AuthService {
         const firstAdminDto: CreateAuthUserDto = {
           email: firstAdminEmail,
           password: hashedPassword,
-          role: UserRole.ADMIN,
+          role: AuthUserRole.ADMIN,
           name: 'First Admin',
         };
 

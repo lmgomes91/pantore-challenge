@@ -10,7 +10,6 @@ export class User {
   @ApiProperty({ description: 'Email do usuário' })
   email: string;
 
-  // @ApiProperty({ description: 'Senha do usuário (não exposta na resposta)' })
   password: string;
 
   @ApiProperty({ enum: ['client', 'admin'], description: 'Função do usuário' })

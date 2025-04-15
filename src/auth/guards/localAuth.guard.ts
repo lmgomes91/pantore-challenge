@@ -4,7 +4,6 @@ import { LocalStrategy } from '../strategies/local.strategy';
 @Injectable()
 export class LocalAuthGuard implements CanActivate {
   constructor(
-    // private authService: AuthService,
     private localStrategy: LocalStrategy,
   ) {}
 
