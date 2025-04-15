@@ -75,13 +75,13 @@ npm run test
 
 ### Endpoints
 
--   `POST /users`: Cria um novo usuário.
--   `PUT /users/:id`: Atualiza o perfil de um usuário existente.
--   `GET /users/:id`: Busca um usuário pelo ID.
--   `GET /users`: Lista todos os usuários (com opção de filtros por query parameters).
--   `POST /auth/login`: Endpoint para autenticação de usuário e obtenção de token.
+-   `POST /users`: Creates a new user.
+-   `PUT /users/:id`: Updates an existing user's profile.
+-   `GET /users/:id`: Retrieves a user by their ID.
+-   `GET /users`: Lists all users (with optional filtering via query parameters).
+-   `POST /auth/login`: Endpoint for user authentication and token retrieval.
 
-Maiores detalhes sobre como utilizar os endpoints podem ser obtidos atraves do [swagger](http://localhost:3000/api)
+More details on how to use the endpoints can be found via the [swagger](http://localhost:3000/api).
 
 ---
 
