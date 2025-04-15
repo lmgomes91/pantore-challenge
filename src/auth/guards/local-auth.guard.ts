@@ -1,5 +1,4 @@
 import { Injectable, CanActivate, ExecutionContext, UnauthorizedException } from '@nestjs/common';
-import { AuthService } from '../auth.service';
 import { LocalStrategy } from '../strategies/local.strategy';
 
 @Injectable()

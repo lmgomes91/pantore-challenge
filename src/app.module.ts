@@ -1,12 +1,10 @@
 import { Module } from '@nestjs/common';
-// import { AppController } from './app.controller';
-// import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { DatabaseConfigService } from './config/databaseConfig.service';
+import { DatabaseConfigService } from './common/config/databaseConfig.service';
 import { AuthModule } from './auth/auth.module';
-import { SecurityConfigService } from './config/securityConfig.service';
+import { SecurityConfigService } from './common/config/securityConfig.service';
 
 @Module({
   imports: [
@@ -27,8 +25,6 @@ import { SecurityConfigService } from './config/securityConfig.service';
     AuthModule
   ],
   providers: [SecurityConfigService],
-  // controllers: [AppController],
-  // providers: [AppService],
   exports: [SecurityConfigService]
 })
 export class AppModule {}

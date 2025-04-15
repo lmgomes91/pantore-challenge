@@ -1,98 +1,120 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# 📦 User Management API
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Project developed as part of the Backend technical assessment for Pantore.
 
-## Description
+## 📑 Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This application is a RESTful API for user management, allowing:
 
-## Project setup
+- 📄 Create a user
+- ✏️ Update a user profile
+- 🔍 Retrieve and list all users
+- 🎯 Filter users by name using a query parameter
 
-```bash
-$ npm install
-```
+The project was built with a focus on clean code practices, code organization, scalability, and Clean Architecture principles.
 
-## Compile and run the project
+---
 
-```bash
-# development
-$ npm run start
+## 🛠️ Technologies Used
 
-# watch mode
-$ npm run start:dev
+- **Node.js**
+- **TypeScript**
+- **NestJS**
+- **MongoDB** (via Mongoose)
+- **Jest** (for automated tests)
+- **ESLint + Prettier** (for code standardization)
 
-# production mode
-$ npm run start:prod
-```
+---
 
-## Run tests
+## 📦 Installation & Execution
+
+### Prerequisites
+
+- [Node.js LTS](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com/)
+
+### Clone the repository
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone https://github.com/lmgomes91/pantore-challenge.git
+cd pantore-challenge
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Install dependencies
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Configure environment variables
 
-## Resources
+Copy the \`.env.example\` file to \`.env\` and fill in the required variables.
 
-Check out a few resources that may come in handy when working with NestJS:
+### Start the application
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+npm run start:dev
+```
 
-## Support
+The API will be available at: [http://localhost:3000](http://localhost:3000)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
+## 🧪 Running Tests
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+To run the automated tests:
 
-## License
+```bash
+npm run test
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+
+## 📖 API Documentation
+
+### Endpoints
+
+-   `POST /users`: Cria um novo usuário.
+-   `PUT /users/:id`: Atualiza o perfil de um usuário existente.
+-   `GET /users/:id`: Busca um usuário pelo ID.
+-   `GET /users`: Lista todos os usuários (com opção de filtros por query parameters).
+-   `POST /auth/login`: Endpoint para autenticação de usuário e obtenção de token.
+
+Maiores detalhes sobre como utilizar os endpoints podem ser obtidos atraves do [swagger](http://localhost:3000/api)
+
+---
+
+## 📊 Implemented Highlights
+
+- ✅ Clean Architecture
+- ✅ TypeScript
+- ✅ NestJS framework
+- ✅ MongoDB with Mongoose
+- ✅ Unit and integration tests with Jest
+- ✅ ESLint and Prettier configured
+- ✅ Validation and exception handling
+
+---
+
+
+## 📬 Contact
+
+For questions or suggestions, feel free to reach out:
+
+📧 lgomes@post.com
+
+---
+
+## 📌 About the Challenge
+
+This project was developed for Pantore’s Backend technical assessment, with the goal of evaluating skills in:
+
+- Software architecture
+- API structuring
+- Database modeling
+- Code efficiency and clean practices
+- Problem-solving with security and scalability in mind
+
+---
+

@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
-export type UserDocument = HydratedDocument<UserSchemaDefinition>;
+export type AuthUserDocument = HydratedDocument<AuthUserSchemaDefinition>;
 
 @Schema({ timestamps: true, collection: 'users' })
-export class UserSchemaDefinition {
+export class AuthUserSchemaDefinition {
   @Prop({ required: true })
   name: string;
 
@@ -18,7 +18,7 @@ export class UserSchemaDefinition {
   role: string;
 }
 
-export const UserSchema = SchemaFactory.createForClass(UserSchemaDefinition);
+export const AuthUserSchema = SchemaFactory.createForClass(AuthUserSchemaDefinition);
 
-UserSchema.index({ name: 1 });
-UserSchema.index({ role: 1 });
+AuthUserSchema.index({ name: 1 });
+AuthUserSchema.index({ role: 1 });

@@ -1,17 +1,16 @@
 import { Module } from '@nestjs/common';
-import { UserController } from '../infrastructure/controllers/user.controller';
-import { CreateUserUseCase } from '../application/useCases/createUser.useCase';
-import { UserRepository } from '../infrastructure/repositories/user.repository';
-import { FilterUsersUseCase } from 'src/application/useCases/filterUsers.useCase';
-import { GetUserUseCase } from 'src/application/useCases/getUser.useCase';
-import { UpdateUserUseCase } from 'src/application/useCases/updateUser.useCase';
-import { SecurityConfigService } from 'src/config/securityConfig.service';
+import { CreateUserUseCase } from './application/useCases/createUser.useCase';
+import { FilterUsersUseCase } from 'src/user/application/useCases/filterUsers.useCase';
+import { GetUserUseCase } from 'src/user/application/useCases/getUser.useCase';
+import { UpdateUserUseCase } from 'src/user/application/useCases/updateUser.useCase';
+import { SecurityConfigService } from 'src/common/config/securityConfig.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from './schemas/user.schema';
-import { DeleteUserUseCase } from 'src/application/useCases/deleteUser.useCase';
-import { UserService } from './user.service';
-import { User } from 'src/domain/entities/user.entity';
-import { PromoteUserToAdminUseCase } from 'src/application/useCases/promoteUserToAdmin.useCase';
+import { DeleteUserUseCase } from 'src/user/application/useCases/deleteUser.useCase';
+import { User } from 'src/user/domain/entities/user.entity';
+import { PromoteUserToAdminUseCase } from 'src/user/application/useCases/promoteUserToAdmin.useCase';
+import { UserController } from './infrastructure/controllers/user.controller';
+import { UserRepository } from './infrastructure/repositories/user.repository';
 
 @Module({
   imports: [
@@ -27,8 +26,9 @@ import { PromoteUserToAdminUseCase } from 'src/application/useCases/promoteUserT
     SecurityConfigService,
     DeleteUserUseCase,
     PromoteUserToAdminUseCase,
-    UserService
+    // UserService
   ],
-  exports: [UserService],
+  // exports: [UserService],
+  exports: [],
 })
 export class UserModule {}
